@@ -55,11 +55,11 @@ export default async function CategoriesPage() {
                                     <div className="flex items-center gap-4 mb-4">
                                         <Badge variant="secondary" className="flex items-center gap-1 font-semibold">
                                             <Newspaper className="h-3 w-3" />
-                                            {/* {category.news_count} Articles */}
+                                            {category.count} Articles
                                         </Badge>
                                         <Badge variant="secondary" className="flex items-center gap-1 font-semibold">
                                             <Video className="h-3 w-3" />
-                                            {/* {category.videos_count} Videos */}
+                                            {category.count} Videos
                                         </Badge>
                                     </div>
                                     <div className="flex gap-2">
