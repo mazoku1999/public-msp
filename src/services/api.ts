@@ -1,11 +1,11 @@
 import { News, Video } from '@/types'
+import { config } from '@/lib/config'
 
 const DEFAULT_CACHE_TIME = process.env.NODE_ENV === 'production' ? 3600 : 0
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api'
 
 export const api = {
     async getCategories(): Promise<any[]> {
-        const response = await fetch(`${BASE_URL}/categorias/public/with-counts`, {
+        const response = await fetch(`${config.baseUrl}/categorias/public/with-counts`, {
             next: { revalidate: DEFAULT_CACHE_TIME }
         })
         if (!response.ok) throw new Error('Failed to fetch categories')
@@ -14,8 +14,8 @@ export const api = {
 
     async getNews(category?: string): Promise<News[]> {
         const url = category
-            ? `${BASE_URL}/noticias/public/categoria/${category}`
-            : `${BASE_URL}/noticias/public`
+            ? `${config.baseUrl}/noticias/public/categoria/${category}`
+            : `${config.baseUrl}/noticias/public`
         const response = await fetch(url, {
             next: { revalidate: DEFAULT_CACHE_TIME }
         })
@@ -24,7 +24,7 @@ export const api = {
     },
 
     async getNewsById(category: string, slug: string): Promise<News> {
-        const response = await fetch(`${BASE_URL}/noticias/slug/${slug}`, {
+        const response = await fetch(`${config.baseUrl}/noticias/slug/${slug}`, {
             next: { revalidate: DEFAULT_CACHE_TIME }
         })
         if (!response.ok) throw new Error('Failed to fetch news article')
@@ -33,8 +33,8 @@ export const api = {
 
     async getVideos(category?: string): Promise<Video[]> {
         const url = category
-            ? `${BASE_URL}/videos/public/categoria/${category}`
-            : `${BASE_URL}/videos/public`
+            ? `${config.baseUrl}/videos/public/categoria/${category}`
+            : `${config.baseUrl}/videos/public`
         const response = await fetch(url, {
             next: { revalidate: DEFAULT_CACHE_TIME }
         })
@@ -43,7 +43,7 @@ export const api = {
     },
 
     async getVideoById(category: string, slug: string): Promise<Video> {
-        const response = await fetch(`${BASE_URL}/videos/slug/${slug}`, {
+        const response = await fetch(`${config.baseUrl}/videos/slug/${slug}`, {
             next: { revalidate: DEFAULT_CACHE_TIME }
         })
         if (!response.ok) throw new Error('Failed to fetch video')
