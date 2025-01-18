@@ -10,7 +10,6 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import { ArticleActions } from "@/components/ArticleActions";
-import { News } from '@/types';
 import { Suspense } from 'react';
 import { cache } from 'react';
 

@@ -7,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Play, User } from "lucide-react"
 import { useRef } from "react"
 import { Button } from "./ui/button"
 import { motion } from "framer-motion"

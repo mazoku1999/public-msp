@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { api } from '@/services/api';
-import { News } from '@/types';
 import ArticleCard from '@/components/ArticleCard';
 import { Suspense } from 'react';
 import { cache } from 'react';

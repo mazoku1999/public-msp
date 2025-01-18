@@ -1,4 +1,3 @@
-import { Video, News } from '../types';
 
 export const generateSlug = (title: string, id: number, date: Date): string => {
     const formattedDate = date.toISOString().split('T')[0].replace(/-/g, '');
