@@ -9,8 +9,12 @@ import { cn } from '@/lib/utils'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-    title: 'Video Immersive Hub',
-    description: 'An immersive platform to explore videos and articles',
+    title: 'MSP News',
+    description: 'Your trusted source for news, articles and videos',
+    icons: {
+        icon: '/favicon.ico',
+        apple: '/logo.png'
+    }
 }
 
 export default function RootLayout({
