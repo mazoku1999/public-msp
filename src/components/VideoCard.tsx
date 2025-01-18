@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Play, User } from "lucide-react"
 import Link from "next/link"
 import type { Video } from "@/types"
+import Image from 'next/image';
 
 interface VideoCardProps {
     video: Video;
@@ -20,9 +21,11 @@ export function VideoCard({ video, index }: VideoCardProps) {
         >
             <Link href={`/videos/${video.category.toLowerCase()}/${video.slug}`}>
                 <div className="relative aspect-[16/10]">
-                    <img
+                    <Image
                         src={video.thumbnail}
                         alt={video.title}
+                        width={500}
+                        height={300}
                         className="w-full h-full object-cover transform transition-all duration-700 group-hover:scale-110 group-hover:brightness-[0.8]"
                         loading="lazy"
                     />

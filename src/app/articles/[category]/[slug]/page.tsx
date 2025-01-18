@@ -12,6 +12,7 @@ import rehypeSanitize from "rehype-sanitize";
 import { ArticleActions } from "@/components/ArticleActions";
 import { Suspense } from 'react';
 import { cache } from 'react';
+import Image from 'next/image';
 
 interface Props {
     params: Promise<{
@@ -68,9 +69,11 @@ export default async function ArticlePage({ params }: Props) {
                 <div className="relative min-h-[50vh] w-full overflow-hidden">
                     {/* Imagen de fondo con efectos */}
                     <div className="absolute inset-0">
-                        <img
+                        <Image
                             src={article.image}
                             alt={article.title}
+                            width={1200}
+                            height={630}
                             className="w-full h-full object-cover"
                         />
                         {/* Efectos de brillo con máscara de degradado */}
@@ -149,13 +152,13 @@ export default async function ArticlePage({ params }: Props) {
                             rehypePlugins={[rehypeRaw, rehypeSanitize]}
                             className="markdown-content"
                             components={{
-                                h1: ({ node, ...props }) => (
+                                h1: ({ ...props }) => (
                                     <h1 className="text-3xl font-extrabold mb-6 text-foreground" {...props} />
                                 ),
-                                h2: ({ node, ...props }) => (
+                                h2: ({ ...props }) => (
                                     <h2 className="text-2xl font-extrabold mt-10 mb-4 text-foreground" {...props} />
                                 ),
-                                h3: ({ node, ...props }) => (
+                                h3: ({ ...props }) => (
                                     <h3 className="text-xl font-semibold mt-8 mb-4 text-foreground" {...props} />
                                 ),
                                 p: ({ node, children, ...props }) => {
@@ -168,23 +171,29 @@ export default async function ArticlePage({ params }: Props) {
                                         </p>
                                     );
                                 },
-                                ul: ({ node, ...props }) => (
+                                ul: ({ ...props }) => (
                                     <ul className="list-disc pl-6 mb-6 space-y-2 text-muted-foreground" {...props} />
                                 ),
-                                li: ({ node, ...props }) => (
+                                li: ({ ...props }) => (
                                     <li className="text-muted-foreground font-medium" {...props} />
                                 ),
-                                blockquote: ({ node, ...props }) => (
+                                blockquote: ({ ...props }) => (
                                     <blockquote className="border-l-4 border-violet-500 pl-4 my-6 italic text-muted-foreground font-medium" {...props} />
                                 ),
-                                a: ({ node, ...props }) => (
+                                a: ({ ...props }) => (
                                     <a className="text-violet-500 hover:text-violet-600 transition-colors font-medium" {...props} />
                                 ),
-                                img: ({ node, ...props }) => (
+                                img: ({ ...props }) => (
                                     <div className="relative group my-8">
                                         <div className="absolute -inset-2 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
                                         <div className="relative rounded-3xl overflow-hidden">
-                                            <img {...props} className="w-full h-full object-cover rounded-3xl" />
+                                            <Image
+                                                {...props}
+                                                width={1200}
+                                                height={630}
+                                                className="w-full h-full object-cover rounded-3xl"
+                                                alt={props.alt || "Article image"}
+                                            />
                                         </div>
                                     </div>
                                 ),

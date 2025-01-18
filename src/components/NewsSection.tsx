@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { ArrowRight, User, Calendar } from "lucide-react"
 import { Button } from "./ui/button"
 import { News } from '@/types'
+import Image from 'next/image';
 
 const SIZES = [
     'aspect-[2/3]',    // Alto
@@ -71,9 +72,11 @@ export const NewsSection = ({ news }: NewsSectionProps) => {
                                 className="block h-full"
                             >
                                 <div className="absolute inset-0">
-                                    <img
+                                    <Image
                                         src={article.image}
                                         alt={article.title}
+                                        width={500}
+                                        height={300}
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />

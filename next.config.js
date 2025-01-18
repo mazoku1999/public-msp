@@ -11,6 +11,9 @@ const nextConfig = {
     }
     return config;
   },
+  images: {
+    domains: ['api.motionsoundnews.com'], // Agrega aquí los dominios de tus imágenes
+  }
 }
 
 module.exports = nextConfig

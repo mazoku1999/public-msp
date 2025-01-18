@@ -13,6 +13,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import type { Video } from "@/types"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import Image from 'next/image';
 
 interface LatestVideosProps {
   videos: Video[]
@@ -82,9 +83,11 @@ export const LatestVideos = ({ videos }: LatestVideosProps) => {
                       className="block aspect-[4/3]"
                     >
                       <div className="absolute inset-0">
-                        <img
+                        <Image
                           src={video.thumbnail}
                           alt={video.title}
+                          width={500}
+                          height={300}
                           className="w-full h-full object-cover transform transition-all duration-700 group-hover:scale-110 group-hover:brightness-[0.8]"
                           loading="lazy"
                         />

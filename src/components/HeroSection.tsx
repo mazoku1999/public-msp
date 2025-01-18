@@ -71,7 +71,7 @@ export const HeroSection = () => {
                 </h1>
 
                 <p className="text-xs xxs:text-sm sm:text-base lg:text-lg font-medium text-white/70 max-w-[95%] xxs:max-w-[90%] sm:max-w-2xl leading-relaxed">
-                  Watch the historic launch of SpaceX's Starship, marking a new era in space exploration
+                  Watch the historic launch of SpaceX&apos;s Starship, marking a new era in space exploration
                   {!isMobile && ' and interplanetary travel'}
                 </p>
               </div>
