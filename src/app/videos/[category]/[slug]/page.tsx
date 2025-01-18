@@ -97,7 +97,7 @@ export default async function VideoPage({ params }: Props) {
                         <div className="relative max-w-5xl mx-auto group px-4 sm:px-0">
                             {/* Efectos de brillo mejorados */}
                             <div className="absolute -inset-[2px] sm:-inset-[60px] bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-indigo-500/10 dark:from-violet-500/20 dark:via-fuchsia-500/20 dark:to-indigo-500/20 rounded-[20px] sm:rounded-[30px] blur-[80px] group-hover:from-violet-500/20 group-hover:via-fuchsia-500/20 group-hover:to-indigo-500/20 dark:group-hover:from-violet-500/30 dark:group-hover:via-fuchsia-500/30 dark:group-hover:to-indigo-500/30 transition-all duration-500" />
-                            <div className="absolute -inset-[1px] bg-gradient-to-r from-violet-500/30 via-fuchsia-500/30 to-indigo-500/30 dark:from-violet-500/50 dark:via-fuchsia-500/50 dark:to-indigo-500/50 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                            {/* <div className="absolute -inset-[1px] bg-gradient-to-r from-violet-500/30 via-fuchsia-500/30 to-indigo-500/30 dark:from-violet-500/50 dark:via-fuchsia-500/50 dark:to-indigo-500/50 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" /> */}
 
                             {/* Video Container */}
                             <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-gray-50 dark:bg-black/90 ring-1 ring-violet-500/20 dark:ring-white/10">
