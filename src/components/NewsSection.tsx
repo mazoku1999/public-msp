@@ -7,6 +7,7 @@ import { ArrowRight, User, Calendar } from "lucide-react"
 import { Button } from "./ui/button"
 import { News } from '@/types'
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 const SIZES = [
     'aspect-[2/3]',    // Alto
@@ -18,6 +19,32 @@ const SIZES = [
 ]
 
 const getSize = (index: number) => SIZES[index % SIZES.length]
+
+// Componente optimizado para imágenes
+const OptimizedImage = ({ src, alt }: { src: string; alt: string }) => {
+    const [isLoading, setIsLoading] = useState(true);
+
+    return (
+        <div className="relative w-full h-full">
+            {/* Blur placeholder */}
+            <div
+                className={`absolute inset-0 bg-muted/20 backdrop-blur-xl transition-opacity duration-700 ${isLoading ? 'opacity-100' : 'opacity-0'
+                    }`}
+            />
+            <Image
+                src={src}
+                alt={alt}
+                width={500}
+                height={300}
+                className={`w-full h-full object-cover transition-all duration-700 ${isLoading ? 'scale-105 blur-sm' : 'scale-100 blur-0'
+                    }`}
+                onLoadingComplete={() => setIsLoading(false)}
+                priority={false}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+        </div>
+    );
+};
 
 interface NewsSectionProps {
     news: News[]
@@ -72,12 +99,9 @@ export const NewsSection = ({ news }: NewsSectionProps) => {
                                 className="block h-full"
                             >
                                 <div className="absolute inset-0">
-                                    <Image
+                                    <OptimizedImage
                                         src={article.image}
                                         alt={article.title}
-                                        width={500}
-                                        height={300}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
                                 </div>
