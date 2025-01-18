@@ -7,7 +7,7 @@ import { ArrowRight, User, Calendar } from "lucide-react"
 import { Button } from "./ui/button"
 import { News } from '@/types'
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const SIZES = [
     'aspect-[2/3]',    // Alto
