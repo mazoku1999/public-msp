@@ -3,8 +3,15 @@ import { config } from '@/lib/config'
 
 const DEFAULT_CACHE_TIME = process.env.NODE_ENV === 'production' ? 3600 : 0
 
+interface Category {
+    id: string;
+    name: string;
+    slug: string;
+    count?: number;
+}
+
 export const api = {
-    async getCategories(): Promise<any[]> {
+    async getCategories(): Promise<Category[]> {
         const response = await fetch(`${config.baseUrl}/categorias/public/with-counts`, {
             next: { revalidate: DEFAULT_CACHE_TIME }
         })

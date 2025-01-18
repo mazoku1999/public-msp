@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import type { News } from "@/types"
 import { useState, useEffect } from 'react';
+import Image from 'next/image'
 
 interface ArticleCardProps {
     article: News;
@@ -38,9 +39,11 @@ export default function ArticleCard({ article, index }: ArticleCardProps) {
                 className="block h-full"
             >
                 <div className="absolute inset-0">
-                    <img
+                    <Image
                         src={article.image}
                         alt={article.title}
+                        width={500}
+                        height={300}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />

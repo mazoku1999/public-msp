@@ -28,7 +28,7 @@ export const Header = () => {
     }, 2000); // Cambia cada 2 segundos
 
     return () => clearInterval(interval);
-  }, []);
+  }, [mobileWords.length]);
 
   const menuItems = ['Home', 'Videos', 'Articles', 'Categories'];
 
