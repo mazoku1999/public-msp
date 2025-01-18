@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 // Implementar cache para la función de fetching
-export const getAllVideos = cache(async () => {
+const getAllVideos = cache(async () => {
     const videos = await api.getVideos()
     return videos
 })

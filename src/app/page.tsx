@@ -3,12 +3,12 @@ import { api } from '@/services/api'
 import { Suspense } from 'react'
 import { cache } from 'react'
 
-export const getVideos = cache(async () => {
+const getVideos = cache(async () => {
     const videos = await api.getVideos()
     return videos
 })
 
-export const getNews = cache(async () => {
+const getNews = cache(async () => {
     const news = await api.getNews()
     return news
 })

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 // Implementar cache para la función de fetching
-export const getAllArticles = cache(async () => {
+const getAllArticles = cache(async () => {
     const news = await api.getNews()
     return news
 })

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 // Implementar cache para la función de fetching
-export const getCategories = cache(async () => {
+const getCategories = cache(async () => {
     const categories = await api.getCategories();
     return categories;
 });
@@ -49,17 +49,17 @@ export default async function CategoriesPage() {
                             <Card key={category.id} className="group">
                                 <CardHeader>
                                     <CardTitle className="font-extrabold">{category.name}</CardTitle>
-                                    <CardDescription className="font-medium">{category.description}</CardDescription>
+                                    <CardDescription className="font-medium">{ }</CardDescription>
                                 </CardHeader>
                                 <CardContent>
                                     <div className="flex items-center gap-4 mb-4">
                                         <Badge variant="secondary" className="flex items-center gap-1 font-semibold">
                                             <Newspaper className="h-3 w-3" />
-                                            {category.news_count} Articles
+                                            {/* {category.news_count} Articles */}
                                         </Badge>
                                         <Badge variant="secondary" className="flex items-center gap-1 font-semibold">
                                             <Video className="h-3 w-3" />
-                                            {category.videos_count} Videos
+                                            {/* {category.videos_count} Videos */}
                                         </Badge>
                                     </div>
                                     <div className="flex gap-2">

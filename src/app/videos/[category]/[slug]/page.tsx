@@ -14,7 +14,7 @@ interface Props {
     }>;
 }
 
-export const getVideoById = cache(async (category: string, slug: string) => {
+const getVideoById = cache(async (category: string, slug: string) => {
     const video = await api.getVideoById(category, slug);
     return video;
 });

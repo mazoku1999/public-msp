@@ -11,7 +11,7 @@ interface Props {
 }
 
 // Implementar cache para la función de fetching
-export const getNewsByCategory = cache(async (category: string) => {
+const getNewsByCategory = cache(async (category: string) => {
     const news = await api.getNews(category);
     return news;
 });
