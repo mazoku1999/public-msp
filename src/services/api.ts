@@ -17,6 +17,7 @@ export const api = {
         })
         if (!response.ok) throw new Error('Failed to fetch categories')
         return response.json()
+
     },
 
     async getNews(category?: string): Promise<News[]> {
