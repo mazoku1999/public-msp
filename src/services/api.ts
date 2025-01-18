@@ -7,7 +7,8 @@ interface Category {
     id: string;
     name: string;
     slug: string;
-    count?: number;
+    news_count: number;
+    videos_count: number;
 }
 
 export const api = {
