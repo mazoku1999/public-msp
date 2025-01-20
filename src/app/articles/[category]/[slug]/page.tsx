@@ -29,27 +29,39 @@ const getArticleById = cache(async (category: string, slug: string) => {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const resolvedParams = await params;
-    const article = await getArticleById(resolvedParams.category, resolvedParams.slug);
+    try {
+        const article = await getArticleById(resolvedParams.category, resolvedParams.slug);
 
-    if (!article) {
         return {
-            title: 'Article Not Found | MSP News',
-            description: 'The requested article could not be found.'
-        };
-    }
-
-    return {
-        title: `${article.title} | MSP News`,
-        description: article.excerpt,
-        openGraph: {
             title: article.title,
             description: article.excerpt,
-            type: 'article',
-            images: [{ url: article.image }],
-            authors: [article.author],
-            publishedTime: article.created_at,
+            openGraph: {
+                title: article.title,
+                description: article.excerpt,
+                type: 'article',
+                url: `${process.env.NEXT_PUBLIC_BASE_URL}/articles/${resolvedParams.category}/${resolvedParams.slug}`,
+                images: [
+                    {
+                        url: article.image || '/logo.png',
+                        width: 1200,
+                        height: 630,
+                        alt: article.title,
+                    }
+                ],
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: article.title,
+                description: article.excerpt,
+                images: [article.image || '/logo.png'],
+            }
         }
-    };
+    } catch (error) {
+        return {
+            title: 'Article Not Found',
+            description: 'The requested article could not be found'
+        }
+    }
 }
 
 export default async function ArticlePage({ params }: Props) {

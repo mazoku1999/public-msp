@@ -21,27 +21,55 @@ const getVideoById = cache(async (category: string, slug: string) => {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const resolvedParams = await params;
-    const video = await getVideoById(resolvedParams.category, resolvedParams.slug);
+    try {
+        const video = await getVideoById(resolvedParams.category, resolvedParams.slug);
 
-    if (!video) {
         return {
-            title: 'Video Not Found | MSP News',
-            description: 'The requested video could not be found.'
-        };
-    }
-
-
-    return {
-        title: `${video.title} | MSP News`,
-        description: video.description,
-        openGraph: {
             title: video.title,
             description: video.description,
-            type: 'video.other',
-            images: [{ url: video.thumbnail }],
-            videos: [{ url: video.url }]
+            openGraph: {
+                title: video.title,
+                description: video.description,
+                type: 'video.other',
+                url: `${process.env.NEXT_PUBLIC_BASE_URL}/videos/${resolvedParams.category}/${resolvedParams.slug}`,
+                images: [
+                    {
+                        url: video.thumbnail,
+                        width: 1200,
+                        height: 630,
+                        alt: video.title,
+                    }
+                ],
+                videos: [
+                    {
+                        url: `https://www.youtube.com/watch?v=${video.youtubeId}`,
+                        width: 1280,
+                        height: 720,
+                        type: 'text/html',
+                    }
+                ]
+            },
+            twitter: {
+                card: 'player',
+                title: video.title,
+                description: video.description,
+                images: [video.thumbnail],
+                players: [
+                    {
+                        playerUrl: `https://www.youtube.com/embed/${video.youtubeId}`,
+                        streamUrl: `https://www.youtube.com/watch?v=${video.youtubeId}`,
+                        width: 1280,
+                        height: 720
+                    }
+                ]
+            }
         }
-    };
+    } catch (error) {
+        return {
+            title: 'Video Not Found',
+            description: 'The requested video could not be found'
+        }
+    }
 }
 
 export default async function VideoPage({ params }: Props) {

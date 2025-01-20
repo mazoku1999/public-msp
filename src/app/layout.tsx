@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-    title: 'MSP News',
+    title: 'Motion Sound News',
     description: 'Your trusted source for news, articles and videos',
     icons: {
         icon: '/favicon.ico',
