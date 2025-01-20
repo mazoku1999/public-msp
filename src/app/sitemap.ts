@@ -2,11 +2,17 @@ import { api } from '@/services/api';
 import { MetadataRoute } from 'next';
 import { News, Video } from '@/types';
 
+function generateSlug(name: string): string {
+    return name.toLowerCase().replace(/\s+/g, '-');
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Obtener todos los artículos, videos y categorías
     const articles = await api.getNews();
     const videos = await api.getVideos();
     const categories = await api.getCategories();
+
+    console.log('Categorías recibidas:', categories); // Log para debug
 
     // URLs base
     const baseUrls: MetadataRoute.Sitemap = [
@@ -36,13 +42,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }
     ];
 
-    // URLs de categorías
-    const categoryUrls = categories.map((category) => ({
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/categories/${category.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.7,
-    }));
+    // URLs de categorías para artículos y videos
+    const categoryUrls = categories.flatMap(category => [
+        {
+            url: `${process.env.NEXT_PUBLIC_BASE_URL}/articles/${generateSlug(category.name)}`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.7,
+        },
+        {
+            url: `${process.env.NEXT_PUBLIC_BASE_URL}/videos/${generateSlug(category.name)}`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.7,
+        }
+    ]);
 
     // URLs de artículos
     const articleUrls = articles.map((article: News) => ({
@@ -60,5 +74,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.6,
     }));
 
-    return [...baseUrls, ...categoryUrls, ...articleUrls, ...videoUrls];
+    // Filtrar cualquier URL que contenga undefined
+    const allUrls = [...baseUrls, ...categoryUrls, ...articleUrls, ...videoUrls]
+        .filter(url => !url.url.includes('undefined'));
+
+    return allUrls;
 } 
