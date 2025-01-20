@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                 ]
             }
         }
-    } catch (error) {
+    } catch {
         return {
             title: 'Video Not Found',
             description: 'The requested video could not be found'
