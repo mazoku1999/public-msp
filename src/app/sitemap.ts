@@ -3,9 +3,10 @@ import { MetadataRoute } from 'next';
 import { News, Video } from '@/types';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    // Obtener todos los artículos y videos
+    // Obtener todos los artículos, videos y categorías
     const articles = await api.getNews();
     const videos = await api.getVideos();
+    const categories = await api.getCategories();
 
     // URLs base
     const baseUrls: MetadataRoute.Sitemap = [
@@ -27,7 +28,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             changeFrequency: 'daily' as const,
             priority: 0.8,
         },
+        {
+            url: `${process.env.NEXT_PUBLIC_BASE_URL}/categories`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.7,
+        }
     ];
+
+    // URLs de categorías
+    const categoryUrls = categories.map((category) => ({
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/categories/${category.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+    }));
 
     // URLs de artículos
     const articleUrls = articles.map((article: News) => ({
@@ -45,5 +60,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.6,
     }));
 
-    return [...baseUrls, ...articleUrls, ...videoUrls];
+    return [...baseUrls, ...categoryUrls, ...articleUrls, ...videoUrls];
 } 
