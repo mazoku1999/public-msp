@@ -12,8 +12,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const videos = await api.getVideos();
     const categories = await api.getCategories();
 
-    console.log('Categorías recibidas:', categories); // Log para debug
-
     // URLs base
     const baseUrls: MetadataRoute.Sitemap = [
         {

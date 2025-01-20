@@ -13,7 +13,20 @@ export const metadata: Metadata = {
     description: 'Your trusted source for news, articles and videos',
     icons: {
         icon: '/favicon.ico',
-        apple: '/logo.png'
+        apple: '/logo.png',
+        shortcut: '/favicon.ico',
+    },
+    openGraph: {
+        images: [{
+            url: '/logo.png',
+            width: 800,
+            height: 600,
+            alt: 'Motion Sound News Logo'
+        }]
+    },
+    other: {
+        'msapplication-TileImage': '/logo.png',
+        'msapplication-TileColor': '#000000'
     }
 }
 
