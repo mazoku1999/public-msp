@@ -38,7 +38,7 @@ const OptimizedImage = ({ src, alt }: { src: string; alt: string }) => {
                 height={300}
                 className={`w-full h-full object-cover transition-all duration-700 ${isLoading ? 'scale-105 blur-sm' : 'scale-100 blur-0'
                     }`}
-                onLoadingComplete={() => setIsLoading(false)}
+                onLoad={() => setIsLoading(false)}
                 priority={false}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />

@@ -13,7 +13,7 @@ export const Header = () => {
   const [mounted, setMounted] = useState(false);
   const [initialTheme, setInitialTheme] = useState<string | undefined>(undefined);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const mobileWords = ["motion", "sound", "news"];
+  const mobileWords = ["Motion", "Sound", "News"];
   const pathname = usePathname();
 
   useEffect(() => {
@@ -96,10 +96,10 @@ export const Header = () => {
         </div>
       </div>
 
-      <header className="fixed top-0 left-0 right-0 w-full px-4 md:px-6 py-4 border-b border-border bg-background/90 backdrop-blur-md z-50 h-[120px]">
+      <header className="fixed top-0 left-0 right-0 w-full px-4 md:px-6 py-6 border-b border-border bg-background/90 backdrop-blur-md z-50 h-[160px]">
         <div className="max-w-7xl mx-auto h-full flex flex-col justify-between">
           {/* Top bar */}
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pt-2 mb-8">
             {/* Left side - Menu button */}
             <button
               className="text-foreground hover:text-foreground/80 transition-colors"
@@ -111,29 +111,32 @@ export const Header = () => {
             </button>
 
             {/* Logo */}
-            <Link href="/" className="text-3xl md:text-4xl font-serif absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2 group">
-              <span className="text-foreground group-hover:text-foreground/90 transition-colors flex items-center">
+            <Link href="/" className="text-6xl md:text-7xl absolute left-1/2 transform -translate-x-1/2 flex items-center gap-4 group min-w-max">
+              <span className="text-foreground group-hover:text-foreground/90 transition-colors flex items-center gap-4 font-['CloisterBlack'] font-normal">
                 {/* Desktop version - full text */}
-                <span className="hidden md:inline">
-                  <WordReveal text="motionsoundnews" delay={0.1} className="inline-block !text-4xl !md:text-4xl" />
+                <span className="hidden md:flex gap-6 min-w-max">
+                  <WordReveal text="Motion" delay={0.1} className="inline-block !text-7xl !md:text-8xl font-['CloisterBlack'] font-thin whitespace-nowrap" />
+                  <WordReveal text="Sound" delay={0.2} className="inline-block !text-7xl !md:text-8xl font-['CloisterBlack'] font-thin whitespace-nowrap" />
+                  <WordReveal text="News" delay={0.3} className="inline-block !text-7xl !md:text-8xl font-['CloisterBlack'] font-thin whitespace-nowrap" />
                 </span>
                 {/* Mobile version - sequential words */}
-                <span className="inline md:hidden">
+                <span className="inline md:hidden min-w-max">
                   <WordReveal
                     text={mobileWords[currentWordIndex]}
                     delay={0.1}
-                    className="inline-block min-w-[120px] text-center"
+                    className="inline-block min-w-[150px] text-center !text-6xl font-['CloisterBlack'] font-thin whitespace-nowrap"
                   />
                 </span>
               </span>
-              <div className="relative">
+              <div className="relative w-[80px] h-[80px] min-w-[80px] min-h-[80px]">
                 <div className="absolute inset-0 bg-gradient-to-r from-foreground/40 via-foreground/30 to-foreground/40 dark:from-indigo-500/60 dark:via-indigo-400/60 dark:to-violet-300/60 rounded-full blur-sm group-hover:blur-md transition-all scale-105 group-hover:scale-110 opacity-0 group-hover:opacity-100 group-hover:rotate-180 duration-700"></div>
                 <Image
                   src="/logo.png"
                   alt="Logo"
-                  width={50}
-                  height={50}
-                  className="object-contain relative hover:scale-105 transition-transform duration-300 group-hover:rotate-[360deg] duration-700"
+                  width={80}
+                  height={80}
+                  className="object-contain w-full h-full relative hover:scale-105 transition-transform duration-300 group-hover:rotate-[360deg] duration-700"
+                  priority
                 />
               </div>
             </Link>

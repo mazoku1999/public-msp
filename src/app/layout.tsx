@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
     title: 'Motion Sound News',
     description: 'Your trusted source for news, articles and videos',
+    metadataBase: new URL('https://motionsoundnews.com'),
     icons: {
         icon: '/favicon.ico',
         apple: '/logo.png',
@@ -48,7 +49,7 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <Header />
-                    <main className="min-h-screen pt-[120px]">
+                    <main className="min-h-screen pt-[160px]">
                         {children}
                     </main>
                     <ScrollToTop />
