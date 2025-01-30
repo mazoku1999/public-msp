@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 
 export const HeroSection = () => {
   const [isMobile, setIsMobile] = useState(true)
+  const descripcion = 'En esta entrevista exclusiva, conversamos con Jorge "Tuto" Quiroga, expresidente de Bolivia (2001-2002).'
 
   useEffect(() => {
     const checkMobile = () => {
@@ -27,7 +28,7 @@ export const HeroSection = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-90" />
           <div className="absolute inset-0 overflow-hidden">
             <iframe
-              src="https://www.youtube.com/embed/hI9HQfCAw64?autoplay=1&mute=1&loop=1&playlist=hI9HQfCAw64&controls=0&showinfo=0&rel=0"
+              src="https://www.youtube.com/embed/NLQqGUvIuCA?autoplay=1&mute=1&loop=1&playlist=NLQqGUvIuCA&controls=0&showinfo=0&rel=0"
               className="absolute w-[300%] xs:w-[200%] sm:w-full h-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
               allow="autoplay; encrypted-media"
               allowFullScreen
@@ -67,18 +68,18 @@ export const HeroSection = () => {
               {/* Texto principal */}
               <div className="relative max-w-4xl space-y-2 xxs:space-y-3 sm:space-y-4">
                 <h1 className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.1]">
-                  SpaceX Successfully Launches Starship
+                  Entrevista a Tuto Quiroga.
                 </h1>
 
                 <p className="text-xs xxs:text-sm sm:text-base lg:text-lg font-medium text-white/70 max-w-[95%] xxs:max-w-[90%] sm:max-w-2xl leading-relaxed">
-                  Watch the historic launch of SpaceX&apos;s Starship, marking a new era in space exploration
-                  {!isMobile && ' and interplanetary travel'}
+                  {descripcion}
+                  {!isMobile && ' '}
                 </p>
               </div>
 
               {/* Botón */}
               <div className="relative pt-2 xxs:pt-3 sm:pt-4">
-                <Link href="/articles/1">
+                <Link href="/videos/politics/entrevista-a-tuto-quiroga--20250130145520">
                   <button className="group relative overflow-hidden rounded-lg xxs:rounded-xl sm:rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/10 hover:border-violet-500/30 transition-all duration-300">
                     <div className="absolute inset-0 bg-gradient-to-r from-white/[0.07] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex items-center gap-1.5 xxs:gap-2 sm:gap-3 px-3 xxs:px-4 sm:px-6 lg:px-8 py-1.5 xxs:py-2 sm:py-3">
