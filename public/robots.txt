@@ -1,4 +1,3 @@
-# Allow all crawlers
 User-agent: *
 Allow: /
 
@@ -9,8 +8,8 @@ Sitemap: https://motionsoundnews.com/sitemap.xml
 Allow: /articles/
 Allow: /videos/
 Allow: /categories/
+Allow: /_next/static/
 
 # Prevent crawling of search results or similar pages
 Disallow: /api/
-Disallow: /_next/
-Disallow: /*? 
+Disallow: /_next/*
