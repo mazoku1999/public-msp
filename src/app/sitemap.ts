@@ -39,6 +39,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 0.7,
         }
     ];
+    // URLs de artículos
+    const articleUrls = articles.map((article: News) => ({
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/articles/${article.category}/${article.slug}`,
+        lastModified: new Date(article.created_at),
+        changeFrequency: 'weekly' as const,
+        priority: 0.6,
+    }));
+
+    // URLs de videos
+    const videoUrls = videos.map((video: Video) => ({
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/videos/${video.category}/${video.slug}`,
+        lastModified: new Date(video.created_at),
+        changeFrequency: 'weekly' as const,
+        priority: 0.6,
+    }));
 
     // URLs de categorías para artículos y videos
     const categoryUrls = categories.flatMap(category => [
@@ -56,21 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }
     ]);
 
-    // URLs de artículos
-    const articleUrls = articles.map((article: News) => ({
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/articles/${article.category}/${article.slug}`,
-        lastModified: new Date(article.created_at),
-        changeFrequency: 'weekly' as const,
-        priority: 0.6,
-    }));
 
-    // URLs de videos
-    const videoUrls = videos.map((video: Video) => ({
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/videos/${video.category}/${video.slug}`,
-        lastModified: new Date(video.created_at),
-        changeFrequency: 'weekly' as const,
-        priority: 0.6,
-    }));
 
     // Filtrar cualquier URL que contenga undefined
     const allUrls = [...baseUrls, ...categoryUrls, ...articleUrls, ...videoUrls]
