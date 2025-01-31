@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             openGraph: {
                 title: video.title,
                 description: video.description,
-                type: 'article',
+                type: 'video.other',
                 url: `${process.env.NEXT_PUBLIC_BASE_URL}/videos/${resolvedParams.category}/${resolvedParams.slug}`,
                 images: [
                     {
@@ -40,15 +40,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                         alt: video.title,
                     }
                 ],
-
+                videos: [
+                    {
+                        url: `https://www.youtube.com/watch?v=${video.youtubeId}`,
+                        width: 1280,
+                        height: 720,
+                        type: 'text/html',
+                    }
+                ]
             },
             twitter: {
-                card: 'summary_large_image',
+                card: 'player',
                 title: video.title,
                 description: video.description,
-                images: [video.thumbnail || '/logo.png'],
-
-            },
+                images: [video.thumbnail],
+                players: [
+                    {
+                        playerUrl: `https://www.youtube.com/embed/${video.youtubeId}`,
+                        streamUrl: `https://www.youtube.com/watch?v=${video.youtubeId}`,
+                        width: 1280,
+                        height: 720
+                    }
+                ]
+            }
         }
     } catch {
         return {
