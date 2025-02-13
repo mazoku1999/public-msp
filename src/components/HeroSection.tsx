@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 
 export const HeroSection = () => {
   const [isMobile, setIsMobile] = useState(true)
-  const descripcion = 'En esta entrevista exclusiva, conversamos con Jorge "Tuto" Quiroga, expresidente de Bolivia (2001-2002).'
+  const descripcion = `En esta entrevista exclusiva de MSN Entrevistas, Manfred Reyes Villa, actual alcalde de Cochabamba y figura política consolidada en Bolivia, expone en detalle su candidatura presidencial para las elecciones de agosto de 2025.`;
 
   useEffect(() => {
     const checkMobile = () => {
@@ -28,7 +28,7 @@ export const HeroSection = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-90" />
           <div className="absolute inset-0 overflow-hidden">
             <iframe
-              src="https://www.youtube.com/embed/NLQqGUvIuCA?autoplay=1&mute=1&loop=1&playlist=NLQqGUvIuCA&controls=0&showinfo=0&rel=0"
+              src="https://www.youtube.com/embed/rzFfD-4rVjo?autoplay=1&mute=1&loop=1&playlist=rzFfD-4rVjo&controls=0&showinfo=0&rel=0"
               className="absolute w-[300%] xs:w-[200%] sm:w-full h-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
               allow="autoplay; encrypted-media"
               allowFullScreen
@@ -68,7 +68,7 @@ export const HeroSection = () => {
               {/* Texto principal */}
               <div className="relative max-w-4xl space-y-2 xxs:space-y-3 sm:space-y-4">
                 <h1 className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.1]">
-                  Entrevista a Tuto Quiroga.
+                  MSN Entrevistas: Manfred Reyes Villa
                 </h1>
 
                 <p className="text-xs xxs:text-sm sm:text-base lg:text-lg font-medium text-white/70 max-w-[95%] xxs:max-w-[90%] sm:max-w-2xl leading-relaxed">
