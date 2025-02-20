@@ -3,38 +3,47 @@
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { useEffect, useState, useRef } from "react"
-import Script from "next/script"
+import { useEffect, useState, useRef, useCallback } from "react"
 
 declare global {
   interface Window {
-    YT: any;
+    YT: {
+      Player: new (elementId: string, config: YouTubePlayerConfig) => YouTubePlayer;
+    };
     onYouTubeIframeAPIReady: () => void;
   }
+}
+
+interface YouTubePlayerConfig {
+  videoId: string;
+  playerVars: {
+    autoplay: number;
+    controls: number;
+    rel: number;
+    showinfo: number;
+    mute: number;
+    modestbranding: number;
+    playsinline: number;
+  };
+  events: {
+    onReady: () => void;
+    onStateChange: (event: { data: number }) => void;
+  };
+}
+
+interface YouTubePlayer {
+  destroy: () => void;
+  playVideo: () => void;
 }
 
 export const HeroSection = () => {
   const [isMobile, setIsMobile] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [isVideoReady, setIsVideoReady] = useState(false)
-  const playerRef = useRef<any>(null)
+  const playerRef = useRef<YouTubePlayer | null>(null)
   const playerReadyRef = useRef(false)
   const descripcion = `El Dr. Chi Hyun Chung, médico, empresario y pastor evangélico de origen surcoreano, ha anunciado su candidatura a la presidencia de Bolivia para las elecciones de 2025.`;
 
-  const initializeYouTubePlayer = () => {
-    if (!window.YT) {
-      // Si la API no está cargada, cargamos el script
-      const tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
-      const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-    } else if (!playerRef.current) {
-      // Si la API está cargada pero el player no está inicializado
-      createPlayer();
-    }
-  };
-
-  const createPlayer = () => {
+  const createPlayer = useCallback(() => {
     if (window.YT && window.YT.Player) {
       playerRef.current = new window.YT.Player('youtube-player', {
         videoId: 'NOd1behBpWY',
@@ -50,15 +59,27 @@ export const HeroSection = () => {
         events: {
           onReady: () => {
             playerReadyRef.current = true;
-            setIsVideoReady(true);
           },
-          onStateChange: (event: any) => {
+          onStateChange: (event) => {
             setIsPlaying(event.data === 1);
           }
         }
       });
     }
-  };
+  }, []);
+
+  const initializeYouTubePlayer = useCallback(() => {
+    if (!window.YT) {
+      // Si la API no está cargada, cargamos el script
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+    } else if (!playerRef.current) {
+      // Si la API está cargada pero el player no está inicializado
+      createPlayer();
+    }
+  }, [createPlayer]);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -82,9 +103,8 @@ export const HeroSection = () => {
       }
       playerReadyRef.current = false;
       setIsPlaying(false);
-      setIsVideoReady(false);
     };
-  }, []);
+  }, [createPlayer, initializeYouTubePlayer]);
 
   // Efecto para reinicializar el player cuando volvemos a la página
   useEffect(() => {
@@ -101,14 +121,13 @@ export const HeroSection = () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('focus', initializeYouTubePlayer);
     };
-  }, []);
+  }, [initializeYouTubePlayer]);
 
   const handleVideoClick = () => {
     if (!isPlaying) {
       if (playerReadyRef.current && playerRef.current?.playVideo) {
         playerRef.current.playVideo();
       } else {
-        setIsVideoReady(true);
         initializeYouTubePlayer();
         const checkInterval = setInterval(() => {
           if (playerReadyRef.current && playerRef.current?.playVideo) {
