@@ -41,12 +41,12 @@ export const HeroSection = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const playerRef = useRef<YouTubePlayer | null>(null)
   const playerReadyRef = useRef(false)
-  const descripcion = `El Dr. Chi Hyun Chung, médico, empresario y pastor evangélico de origen surcoreano, ha anunciado su candidatura a la presidencia de Bolivia para las elecciones de 2025.`;
+  const descripcion = `Análisis de la candidatura de Samuel Doria Medina, su visión para Bolivia y la estrategia de unidad opositora frente al MAS. Claves económicas y democráticas.`;
 
   const createPlayer = useCallback(() => {
     if (window.YT && window.YT.Player) {
       playerRef.current = new window.YT.Player('youtube-player', {
-        videoId: 'NOd1behBpWY',
+        videoId: 'DS431a8KEG0',
         playerVars: {
           autoplay: 1,
           controls: 1,
@@ -152,8 +152,8 @@ export const HeroSection = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-90" />
             <div className="absolute inset-0 overflow-hidden">
               <Image
-                src="https://i.ytimg.com/vi/NOd1behBpWY/maxresdefault.jpg"
-                alt="MSN Entrevistas: Chi Hyun Chung"
+                src="https://i.ytimg.com/vi/DS431a8KEG0/maxresdefault.jpg"
+                alt="ENTREVISTA MSN: SAMUEL DORIA MEDINA"
                 fill
                 className="object-cover"
                 priority
@@ -185,7 +185,7 @@ export const HeroSection = () => {
           {/* More Details Button - Moved to top */}
           <div className="absolute top-3 xxs:top-4 xs:top-6 sm:top-8 lg:top-10 left-3 xxs:left-4 xs:left-6 sm:left-8 lg:left-10 z-30">
             <Link
-              href="/videos/politics/msn-entrevistas-chi-hyun-chung-habla-sobre-su-candidatura-presidencial--20250220201842"
+              href="https://motionsoundnews.com/videos/politics/entrevista-msn-samuel-doria-medina-analiza-estrategia-opositora-y-vision-para-bolivia--20250224231232"
               className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-white rounded-lg text-violet-600 hover:text-violet-700 active:text-violet-800 font-bold transform hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_6px_0_0_rgba(109,40,217)] active:shadow-[0_3px_0_0_rgba(109,40,217)] transition-all duration-150 group/button"
               onClick={(e) => {
                 e.stopPropagation();
@@ -218,7 +218,7 @@ export const HeroSection = () => {
                 {/* Texto principal */}
                 <div className="relative max-w-4xl space-y-2 xxs:space-y-3 sm:space-y-4">
                   <h1 className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.1]">
-                    MSN ENTREVISTAS: Chi Hyun Chung Habla Sobre su Candidatura Presidencial
+                    ENTREVISTA MSN: SAMUEL DORIA MEDINA
                   </h1>
 
                   <p className="text-xs xxs:text-sm sm:text-base lg:text-lg font-medium text-white/70 max-w-[95%] xxs:max-w-[90%] sm:max-w-2xl leading-relaxed">
