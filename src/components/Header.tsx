@@ -6,6 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import WordReveal from "@/components/ui/word-reveal";
+// Importamos el tipo para la animación de Lottie
+import type { AnimationItem } from "lottie-web";
 
 export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -38,7 +40,7 @@ export const Header = () => {
 
   useEffect(() => {
     // This effect will handle setting up the Lottie animation when component mounts
-    let animation: any;
+    let animation: AnimationItem | null = null;
 
     if (typeof window !== 'undefined' && lottieRef.current) {
       import('lottie-web').then((LottieModule) => {
@@ -58,10 +60,10 @@ export const Header = () => {
     };
   }, []);
 
-  const isActiveLink = (item: string) => {
-    if (item === 'Home' && pathname === '/') return true;
-    return pathname === `/${item.toLowerCase()}`;
-  };
+  // const isActiveLink = (item: string) => {
+  //   if (item === 'Home' && pathname === '/') return true;
+  //   return pathname === `/${item.toLowerCase()}`;
+  // };
 
   const renderThemeIcon = () => {
     // Usamos resolvedTheme si está montado, o initialTheme como fallback
