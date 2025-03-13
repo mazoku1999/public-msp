@@ -1,7 +1,7 @@
 "use client"
 
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -30,7 +30,33 @@ export const Header = () => {
     return () => clearInterval(interval);
   }, [mobileWords.length]);
 
-  const menuItems = ['Home', 'Videos', 'Articles', 'Categories'];
+  // Commented out menu items
+  // const menuItems = ['Home', 'Videos', 'Articles', 'Categories'];
+
+  // For Lottie animation
+  const lottieRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // This effect will handle setting up the Lottie animation when component mounts
+    let animation: any;
+
+    if (typeof window !== 'undefined' && lottieRef.current) {
+      import('lottie-web').then((LottieModule) => {
+        const Lottie = LottieModule.default;
+        animation = Lottie.loadAnimation({
+          container: lottieRef.current as Element,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: '/animations/election-animation.json', // Update this path to your actual Lottie animation file
+        });
+      });
+    }
+
+    return () => {
+      if (animation) animation.destroy();
+    };
+  }, []);
 
   const isActiveLink = (item: string) => {
     if (item === 'Home' && pathname === '/') return true;
@@ -77,20 +103,55 @@ export const Header = () => {
           </button>
           <nav className="mt-8">
             <ul className="space-y-4">
-              {menuItems.map((item) => (
-                <li key={item}>
-                  <Link
-                    href={item === 'News' ? '/' : `/${item.toLowerCase()}`}
-                    className={`block px-4 py-2 rounded-lg transition-all ${isActiveLink(item)
-                      ? 'text-foreground font-semibold bg-foreground/5'
-                      : 'text-muted-foreground hover:text-foreground hover:font-semibold hover:bg-foreground/5'
-                      }`}
-                    onClick={() => setIsDrawerOpen(false)}
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              {/* Replace menuItems with direct links */}
+              <li>
+                <Link
+                  href="/"
+                  className={`block px-4 py-2 rounded-lg transition-all ${pathname === '/'
+                    ? 'text-foreground font-semibold bg-foreground/5'
+                    : 'text-muted-foreground hover:text-foreground hover:font-semibold hover:bg-foreground/5'
+                    }`}
+                  onClick={() => setIsDrawerOpen(false)}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/videos"
+                  className={`block px-4 py-2 rounded-lg transition-all ${pathname === '/videos'
+                    ? 'text-foreground font-semibold bg-foreground/5'
+                    : 'text-muted-foreground hover:text-foreground hover:font-semibold hover:bg-foreground/5'
+                    }`}
+                  onClick={() => setIsDrawerOpen(false)}
+                >
+                  Videos
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/articles"
+                  className={`block px-4 py-2 rounded-lg transition-all ${pathname === '/articles'
+                    ? 'text-foreground font-semibold bg-foreground/5'
+                    : 'text-muted-foreground hover:text-foreground hover:font-semibold hover:bg-foreground/5'
+                    }`}
+                  onClick={() => setIsDrawerOpen(false)}
+                >
+                  Articles
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/categories"
+                  className={`block px-4 py-2 rounded-lg transition-all ${pathname === '/categories'
+                    ? 'text-foreground font-semibold bg-foreground/5'
+                    : 'text-muted-foreground hover:text-foreground hover:font-semibold hover:bg-foreground/5'
+                    }`}
+                  onClick={() => setIsDrawerOpen(false)}
+                >
+                  Categories
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -115,16 +176,16 @@ export const Header = () => {
               <span className="text-foreground group-hover:text-foreground/90 transition-colors flex items-center gap-4 font-['CloisterBlack'] font-normal">
                 {/* Desktop version - full text */}
                 <span className="hidden md:flex gap-6 min-w-max">
-                  <WordReveal text="Motion" delay={0.1} className="inline-block !text-7xl !md:text-8xl font-['CloisterBlack'] font-thin whitespace-nowrap" />
-                  <WordReveal text="Sound" delay={0.2} className="inline-block !text-7xl !md:text-8xl font-['CloisterBlack'] font-thin whitespace-nowrap" />
-                  <WordReveal text="News" delay={0.3} className="inline-block !text-7xl !md:text-8xl font-['CloisterBlack'] font-thin whitespace-nowrap" />
+                  <WordReveal text="Motion" delay={0.1} className="inline-block !text-7xl !md:text-8xl font-cloister font-thin whitespace-nowrap" />
+                  <WordReveal text="Sound" delay={0.2} className="inline-block !text-7xl !md:text-8xl font-cloister font-thin whitespace-nowrap" />
+                  <WordReveal text="News" delay={0.3} className="inline-block !text-7xl !md:text-8xl font-cloister font-thin whitespace-nowrap" />
                 </span>
                 {/* Mobile version - sequential words */}
                 <span className="inline md:hidden min-w-max">
                   <WordReveal
                     text={mobileWords[currentWordIndex]}
                     delay={0.1}
-                    className="inline-block min-w-[150px] text-center !text-6xl font-['CloisterBlack'] font-thin whitespace-nowrap"
+                    className="inline-block min-w-[150px] text-center !text-6xl font-cloister font-thin whitespace-nowrap"
                   />
                 </span>
               </span>
@@ -153,19 +214,15 @@ export const Header = () => {
 
           {/* Navigation */}
           <nav className="flex justify-center overflow-x-auto whitespace-nowrap">
-            <div className="flex space-x-6 md:space-x-12">
-              {menuItems.map((item) => (
-                <Link
-                  key={item}
-                  href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                  className={`relative pb-2.5 px-1 font-normal hover:font-semibold transition-all ${isActiveLink(item)
-                    ? 'text-foreground font-semibold after:absolute after:left-0 after:bottom-0 after:w-full after:h-[3px] after:bg-foreground after:rounded-full after:shadow-[0_4px_20px_0_rgba(0,0,0,0.3),0_8px_30px_0_rgba(0,0,0,0.2),0_-2px_10px_0_rgba(0,0,0,0.1)] dark:after:bg-white dark:after:shadow-[0_4px_20px_0_rgba(255,255,255,0.7),0_8px_30px_0_rgba(255,255,255,0.5),0_-2px_10px_0_rgba(255,255,255,0.4)] after:transition-all'
-                    : 'text-muted-foreground hover:text-foreground after:absolute after:left-0 after:bottom-0 after:w-full after:h-[3px] after:bg-foreground/0 hover:after:bg-foreground/30 dark:hover:after:bg-white/30 hover:after:shadow-[0_4px_10px_0_rgba(0,0,0,0.1),0_8px_20px_0_rgba(0,0,0,0.1)] dark:hover:after:shadow-[0_4px_10px_0_rgba(255,255,255,0.2),0_8px_20px_0_rgba(255,255,255,0.1)] after:rounded-full after:transition-all'
-                    }`}
-                >
-                  {item}
-                </Link>
-              ))}
+            <div className="flex items-center space-x-4 md:space-x-6 bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 px-6 py-3 rounded-full shadow-md">
+              <span className="text-foreground font-bold text-lg md:text-xl tracking-wide uppercase">ELECCIONES BOLIVIA 2025</span>
+              {/* Lottie animation container - Increased size */}
+              <div
+                ref={lottieRef}
+                className="w-12 h-12 md:w-16 md:h-16 inline-block"
+              ></div>
+              <span className="hidden md:inline-block text-muted-foreground">|</span>
+              <span className="text-foreground font-bold text-lg md:text-xl tracking-wide uppercase">WWW.MSNBOL.COM</span>
             </div>
           </nav>
         </div>

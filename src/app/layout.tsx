@@ -1,12 +1,18 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Poppins, Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import { Header } from '@/components/Header'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import { cn } from '@/lib/utils'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const poppins = Poppins({
+    weight: ['300', '400', '500', '600', '700'],
+    subsets: ['latin'],
+    variable: '--font-poppins',
+    display: 'swap',
+})
 
 export const metadata: Metadata = {
     title: 'Motion Sound News',
@@ -40,7 +46,8 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <body className={cn(
                 'min-h-screen bg-background font-sans antialiased',
-                inter.className
+                poppins.variable,
+                inter.variable
             )}>
                 <ThemeProvider
                     attribute="class"
