@@ -159,22 +159,22 @@ export const Header = () => {
         </div>
       </div>
 
-      <header className="fixed top-0 left-0 right-0 w-full px-4 md:px-6 py-6 border-b border-border bg-background/90 backdrop-blur-md z-50 h-[160px]">
+      <header className="fixed top-0 left-0 right-0 w-full px-4 md:px-6 py-4 md:py-6 border-b border-border bg-background/90 backdrop-blur-md z-50 h-[140px] md:h-[160px]">
         <div className="max-w-7xl mx-auto h-full flex flex-col justify-between">
           {/* Top bar */}
-          <div className="flex items-center justify-between pt-2 mb-8">
+          <div className="flex items-center justify-between pt-1 md:pt-2 mb-4 md:mb-8">
             {/* Left side - Menu button */}
             <button
               className="text-foreground hover:text-foreground/80 transition-colors"
               onClick={() => setIsDrawerOpen(true)}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 md:h-7 md:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
 
             {/* Logo */}
-            <Link href="/" className="text-6xl md:text-7xl absolute left-1/2 transform -translate-x-1/2 flex items-center gap-4 group min-w-max">
+            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2 md:gap-4 group">
               <span className="text-foreground group-hover:text-foreground/90 transition-colors flex items-center gap-4 font-['CloisterBlack'] font-normal">
                 {/* Desktop version - full text */}
                 <span className="hidden md:flex gap-6 min-w-max">
@@ -187,11 +187,11 @@ export const Header = () => {
                   <WordReveal
                     text={mobileWords[currentWordIndex]}
                     delay={0.1}
-                    className="inline-block min-w-[150px] text-center !text-6xl font-cloister font-thin whitespace-nowrap"
+                    className="inline-block min-w-[120px] text-center !text-5xl sm:!text-6xl font-cloister font-thin whitespace-nowrap"
                   />
                 </span>
               </span>
-              <div className="relative w-[80px] h-[80px] min-w-[80px] min-h-[80px]">
+              <div className="relative w-[60px] h-[60px] min-w-[60px] min-h-[60px] md:w-[80px] md:h-[80px] md:min-w-[80px] md:min-h-[80px]">
                 <div className="absolute inset-0 bg-gradient-to-r from-foreground/40 via-foreground/30 to-foreground/40 dark:from-indigo-500/60 dark:via-indigo-400/60 dark:to-violet-300/60 rounded-full blur-sm group-hover:blur-md transition-all scale-105 group-hover:scale-110 opacity-0 group-hover:opacity-100 group-hover:rotate-180 duration-700"></div>
                 <Image
                   src="/logo.png"
@@ -202,7 +202,7 @@ export const Header = () => {
                   priority
                 />
               </div>
-            </Link>
+            </div>
 
             {/* Dark mode toggle */}
             <button
@@ -215,16 +215,16 @@ export const Header = () => {
           </div>
 
           {/* Navigation */}
-          <nav className="flex justify-center overflow-x-auto whitespace-nowrap">
-            <div className="flex items-center space-x-4 md:space-x-6 bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 px-6 py-3 rounded-full shadow-md">
-              <span className="text-foreground font-bold text-lg md:text-xl tracking-wide uppercase">ELECCIONES BOLIVIA 2025</span>
+          <nav className="flex justify-center w-full overflow-x-auto pb-1">
+            <div className="flex items-center justify-center space-x-2 xxs:space-x-3 md:space-x-6 bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 px-3 xxs:px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md">
+              <span className="text-foreground font-bold text-[0.65rem] xxs:text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl tracking-wide uppercase whitespace-nowrap">ELECCIONES BOLIVIA 2025</span>
               {/* Lottie animation container - Increased size */}
               <div
                 ref={lottieRef}
-                className="w-12 h-12 md:w-16 md:h-16 inline-block"
+                className="w-8 h-8 xxs:w-10 xxs:h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 inline-block flex-shrink-0"
               ></div>
-              <span className="hidden md:inline-block text-muted-foreground">|</span>
-              <span className="text-foreground font-bold text-lg md:text-xl tracking-wide uppercase">WWW.MSNBOL.COM</span>
+              <span className="text-muted-foreground">|</span>
+              <span className="text-foreground font-bold text-[0.65rem] xxs:text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl tracking-wide uppercase whitespace-nowrap">WWW.MSNBOL.COM</span>
             </div>
           </nav>
         </div>
