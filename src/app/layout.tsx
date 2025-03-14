@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/providers/theme-provider'
 import { Header } from '@/components/Header'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import { cn } from '@/lib/utils'
+import { HeaderHeightAdjuster } from '@/components/HeaderHeightAdjuster'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const poppins = Poppins({
@@ -56,7 +57,8 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <Header />
-                    <main className="min-h-screen pt-[160px]">
+                    <HeaderHeightAdjuster />
+                    <main className="min-h-screen pt-[var(--header-height)]">
                         {children}
                     </main>
                     <ScrollToTop />

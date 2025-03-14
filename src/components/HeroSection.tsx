@@ -185,7 +185,7 @@ export const HeroSection = () => {
           {/* More Details Button - Moved to top */}
           <div className="absolute top-3 xxs:top-4 xs:top-6 sm:top-8 lg:top-10 left-3 xxs:left-4 xs:left-6 sm:left-8 lg:left-10 z-30">
             <Link
-              href="/videos/politics/resultados-del-sondeo-electoral-2025-jovenes-bolivianos-claman-por-un-lider-en-medio-de-la-crisis--20250312164728"
+              href="/videos/politica/resultados-del-sondeo-electoral-2025-jovenes-bolivianos-claman-por-un-lider-en-medio-de-la-crisis--20250312164728"
               className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-white rounded-lg text-violet-600 hover:text-violet-700 active:text-violet-800 font-bold transform hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_6px_0_0_rgba(109,40,217)] active:shadow-[0_3px_0_0_rgba(109,40,217)] transition-all duration-150 group/button"
               onClick={(e) => {
                 e.stopPropagation();

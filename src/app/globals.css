@@ -33,6 +33,15 @@
         --ring: 262.1 83.3% 57.8%;
 
         --radius: 0.5rem;
+
+        /* Header height variable - valor inicial que será actualizado dinámicamente */
+        --header-height: 110px;
+    }
+
+    @media (min-width: 768px) {
+        :root {
+            --header-height: 150px;
+        }
     }
 
     .dark {

@@ -159,10 +159,10 @@ export const Header = () => {
         </div>
       </div>
 
-      <header className="fixed top-0 left-0 right-0 w-full px-4 md:px-6 py-4 md:py-6 border-b border-border bg-background/90 backdrop-blur-md z-50 h-[140px] md:h-[160px]">
-        <div className="max-w-7xl mx-auto h-full flex flex-col justify-between">
+      <header className="fixed top-0 left-0 right-0 w-full px-4 md:px-6 pt-4 pb-3 md:py-4 border-b border-border bg-background/90 backdrop-blur-md z-50">
+        <div className="max-w-7xl mx-auto flex flex-col md:justify-between">
           {/* Top bar */}
-          <div className="flex items-center justify-between pt-1 md:pt-2 mb-4 md:mb-8">
+          <div className="flex items-center justify-between pt-1 md:pt-2 mb-2 md:mb-5">
             {/* Left side - Menu button */}
             <button
               className="text-foreground hover:text-foreground/80 transition-colors"
@@ -174,7 +174,7 @@ export const Header = () => {
             </button>
 
             {/* Logo */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2 md:gap-4 group">
+            <Link href="/" className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2 md:gap-4 group pt-1 md:pt-3 cursor-pointer">
               <span className="text-foreground group-hover:text-foreground/90 transition-colors flex items-center gap-4 font-['CloisterBlack'] font-normal">
                 {/* Desktop version - full text */}
                 <span className="hidden md:flex gap-6 min-w-max">
@@ -187,11 +187,11 @@ export const Header = () => {
                   <WordReveal
                     text={mobileWords[currentWordIndex]}
                     delay={0.1}
-                    className="inline-block min-w-[120px] text-center !text-5xl sm:!text-6xl font-cloister font-thin whitespace-nowrap"
+                    className="inline-block min-w-[120px] text-center !text-4xl sm:!text-5xl font-cloister font-thin whitespace-nowrap"
                   />
                 </span>
               </span>
-              <div className="relative w-[60px] h-[60px] min-w-[60px] min-h-[60px] md:w-[80px] md:h-[80px] md:min-w-[80px] md:min-h-[80px]">
+              <div className="relative w-[50px] h-[50px] min-w-[50px] min-h-[50px] md:w-[80px] md:h-[80px] md:min-w-[80px] md:min-h-[80px]">
                 <div className="absolute inset-0 bg-gradient-to-r from-foreground/40 via-foreground/30 to-foreground/40 dark:from-indigo-500/60 dark:via-indigo-400/60 dark:to-violet-300/60 rounded-full blur-sm group-hover:blur-md transition-all scale-105 group-hover:scale-110 opacity-0 group-hover:opacity-100 group-hover:rotate-180 duration-700"></div>
                 <Image
                   src="/logo.png"
@@ -202,7 +202,7 @@ export const Header = () => {
                   priority
                 />
               </div>
-            </div>
+            </Link>
 
             {/* Dark mode toggle */}
             <button
@@ -215,16 +215,16 @@ export const Header = () => {
           </div>
 
           {/* Navigation */}
-          <nav className="flex justify-center w-full overflow-x-auto pb-1">
-            <div className="flex items-center justify-center space-x-1 xxs:space-x-2 md:space-x-4 bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 px-2 xxs:px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full shadow-md max-w-[98%]">
-              <span className="text-foreground font-bold text-[2.5vw] xxs:text-[2.8vw] xs:text-[3vw] sm:text-[2.2vw] md:text-lg lg:text-xl tracking-wide uppercase whitespace-nowrap">ELECCIONES BOLIVIA 2025</span>
-              {/* Lottie animation container - Increased size */}
+          <nav className="flex justify-center w-full pb-0 mt-2 md:mt-4">
+            <div className="flex items-center justify-center space-x-1 xxs:space-x-2 md:space-x-3 bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 px-2 xxs:px-3 sm:px-3 md:px-4 py-0.5 rounded-full shadow-sm">
+              <span className="text-foreground font-bold text-[2vw] xxs:text-[2.2vw] xs:text-[2.4vw] sm:text-[1.8vw] md:text-xs lg:text-sm tracking-wide uppercase whitespace-nowrap leading-none my-0.5">ELECCIONES BOLIVIA 2025</span>
+              {/* Lottie animation container */}
               <div
                 ref={lottieRef}
-                className="w-6 h-6 xxs:w-7 xxs:h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 inline-block flex-shrink-0"
+                className="w-4 h-4 xxs:w-5 xxs:h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 inline-block flex-shrink-0"
               ></div>
-              <span className="text-muted-foreground text-[2.5vw] xxs:text-[2.8vw] xs:text-[3vw] sm:text-[2.2vw] md:text-base">|</span>
-              <span className="text-foreground font-bold text-[2.5vw] xxs:text-[2.8vw] xs:text-[3vw] sm:text-[2.2vw] md:text-lg lg:text-xl tracking-wide uppercase whitespace-nowrap">WWW.MSNBOL.COM</span>
+              <span className="text-muted-foreground text-[2vw] xxs:text-[2.2vw] xs:text-[2.4vw] sm:text-[1.8vw] md:text-xs leading-none">|</span>
+              <span className="text-foreground font-bold text-[2vw] xxs:text-[2.2vw] xs:text-[2.4vw] sm:text-[1.8vw] md:text-xs lg:text-sm tracking-wide uppercase whitespace-nowrap leading-none my-0.5">WWW.MSNBOL.COM</span>
             </div>
           </nav>
         </div>
