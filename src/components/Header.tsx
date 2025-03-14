@@ -216,15 +216,15 @@ export const Header = () => {
 
           {/* Navigation */}
           <nav className="flex justify-center w-full overflow-x-auto pb-1">
-            <div className="flex items-center justify-center space-x-2 xxs:space-x-3 md:space-x-6 bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 px-3 xxs:px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md">
-              <span className="text-foreground font-bold text-[0.65rem] xxs:text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl tracking-wide uppercase whitespace-nowrap">ELECCIONES BOLIVIA 2025</span>
+            <div className="flex items-center justify-center space-x-1 xxs:space-x-2 md:space-x-4 bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 px-2 xxs:px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full shadow-md max-w-[98%]">
+              <span className="text-foreground font-bold text-[2.5vw] xxs:text-[2.8vw] xs:text-[3vw] sm:text-[2.2vw] md:text-lg lg:text-xl tracking-wide uppercase whitespace-nowrap">ELECCIONES BOLIVIA 2025</span>
               {/* Lottie animation container - Increased size */}
               <div
                 ref={lottieRef}
-                className="w-8 h-8 xxs:w-10 xxs:h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 inline-block flex-shrink-0"
+                className="w-6 h-6 xxs:w-7 xxs:h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 inline-block flex-shrink-0"
               ></div>
-              <span className="text-muted-foreground">|</span>
-              <span className="text-foreground font-bold text-[0.65rem] xxs:text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl tracking-wide uppercase whitespace-nowrap">WWW.MSNBOL.COM</span>
+              <span className="text-muted-foreground text-[2.5vw] xxs:text-[2.8vw] xs:text-[3vw] sm:text-[2.2vw] md:text-base">|</span>
+              <span className="text-foreground font-bold text-[2.5vw] xxs:text-[2.8vw] xs:text-[3vw] sm:text-[2.2vw] md:text-lg lg:text-xl tracking-wide uppercase whitespace-nowrap">WWW.MSNBOL.COM</span>
             </div>
           </nav>
         </div>
