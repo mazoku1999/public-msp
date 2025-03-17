@@ -9,8 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-    title: 'Categories | MSP News',
-    description: 'Explore our content by categories',
+    title: 'Categorías | MSP News',
+    description: 'Explora nuestro contenido por categorías',
 };
 
 // Implementar cache para la función de fetching
@@ -30,19 +30,19 @@ export default async function CategoriesPage() {
                     <div className="relative">
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
                             <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-500 to-pink-500 font-extrabold">
-                                Browse
+                                Explorar
                             </span>
-                            <span className="ml-3 text-foreground/90 font-extrabold">Categories</span>
+                            <span className="ml-3 text-foreground/90 font-extrabold">Categorías</span>
                         </h1>
                         <div className="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 rounded-full blur-3xl" />
                     </div>
                     <p className="mt-4 text-lg text-muted-foreground/80 max-w-2xl font-medium">
-                        Explore our content organized by topics and interests
+                        Explora nuestro contenido organizado por temas e intereses
                     </p>
                 </div>
 
                 <Suspense fallback={<div className="w-full py-12 flex items-center justify-center">
-                    <div className="animate-pulse text-lg text-muted-foreground font-medium">Loading categories...</div>
+                    <div className="animate-pulse text-lg text-muted-foreground font-medium">Cargando categorías...</div>
                 </div>}>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {categories.map((category) => (
@@ -55,7 +55,7 @@ export default async function CategoriesPage() {
                                     <div className="flex items-center gap-4 mb-4">
                                         <Badge variant="secondary" className="flex items-center gap-1 font-semibold">
                                             <Newspaper className="h-3 w-3" />
-                                            {category.news_count} Articles
+                                            {category.news_count} Artículos
                                         </Badge>
                                         <Badge variant="secondary" className="flex items-center gap-1 font-semibold">
                                             <Video className="h-3 w-3" />
@@ -70,7 +70,7 @@ export default async function CategoriesPage() {
                                             asChild
                                         >
                                             <Link href={`/articles/${category.name.toLowerCase()}`}>
-                                                View Articles
+                                                Ver Artículos
                                                 <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                                             </Link>
                                         </Button>
@@ -81,7 +81,7 @@ export default async function CategoriesPage() {
                                             asChild
                                         >
                                             <Link href={`/videos/${category.name.toLowerCase()}`}>
-                                                View Videos
+                                                Ver Videos
                                                 <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                                             </Link>
                                         </Button>
