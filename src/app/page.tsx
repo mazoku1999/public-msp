@@ -22,10 +22,10 @@ export default async function Home() {
     return (
         <main className="min-h-screen bg-background">
             <HeroSection />
-            <Suspense fallback={<div>Loading videos...</div>}>
+            <Suspense fallback={<div>Cargando videos...</div>}>
                 <LatestVideos videos={videos} />
             </Suspense>
-            <Suspense fallback={<div>Loading news...</div>}>
+            <Suspense fallback={<div>Cargando noticias...</div>}>
                 <NewsSection news={news} />
             </Suspense>
         </main>
