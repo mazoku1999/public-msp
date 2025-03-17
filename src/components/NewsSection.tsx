@@ -59,14 +59,14 @@ export const NewsSection = ({ news }: NewsSectionProps) => {
                         <div className="relative">
                             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
                                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-500 to-pink-500 font-extrabold">
-                                    Breaking
+                                    Últimas
                                 </span>
-                                <span className="ml-3 text-foreground/90 font-extrabold">News</span>
+                                <span className="ml-3 text-foreground/90 font-extrabold">Noticias</span>
                             </h2>
                             <div className="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 rounded-full blur-3xl" />
                         </div>
                         <p className="text-lg text-muted-foreground/80 max-w-2xl font-medium">
-                            Stay updated with the latest stories and developments
+                            Mantente al día con las últimas historias y acontecimientos
                         </p>
                     </div>
                     <Link href="/articles">
@@ -76,7 +76,7 @@ export const NewsSection = ({ news }: NewsSectionProps) => {
                             border-none bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-pink-500/10 hover:from-violet-500/20 hover:via-fuchsia-500/20 hover:to-pink-500/20"
                         >
                             <span className="relative z-10 bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text text-transparent font-semibold">
-                                View All
+                                Ver Todo
                             </span>
                             <span className="ml-2 relative z-10 transition-transform duration-300 group-hover:translate-x-1">
                                 →
@@ -128,7 +128,7 @@ export const NewsSection = ({ news }: NewsSectionProps) => {
                                             <div className="flex items-center gap-1.5">
                                                 <Calendar className="h-3.5 w-3.5" />
                                                 <span>
-                                                    {new Date(article.created_at).toLocaleDateString('en-US', {
+                                                    {new Date(article.created_at).toLocaleDateString('es-ES', {
                                                         year: 'numeric',
                                                         month: 'long',
                                                         day: 'numeric'

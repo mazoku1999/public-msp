@@ -191,7 +191,7 @@ export const HeroSection = () => {
                 e.stopPropagation();
               }}
             >
-              <span className="text-sm sm:text-base tracking-wide">More Details</span>
+              <span className="text-sm sm:text-base tracking-wide">Más Detalles</span>
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-150 group-hover/button:translate-x-1" />
             </Link>
           </div>

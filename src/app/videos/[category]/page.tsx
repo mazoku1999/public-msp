@@ -19,8 +19,8 @@ const getVideosByCategory = cache(async (category: string) => {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const resolvedParams = await params;
     return {
-        title: `Videos in ${resolvedParams.category}`,
-        description: `Explore our videos about ${resolvedParams.category}`,
+        title: `Videos en ${resolvedParams.category}`,
+        description: `Explora nuestros videos sobre ${resolvedParams.category}`,
     };
 }
 
@@ -31,10 +31,10 @@ export default async function CategoryPage({ params }: Props) {
     return (
         <div className="max-w-6xl mx-auto py-8 px-4">
             <h1 className="text-3xl font-bold mb-8">
-                Videos about {resolvedParams.category}
+                Videos sobre {resolvedParams.category}
             </h1>
             <Suspense fallback={<div className="w-full py-12 flex items-center justify-center">
-                <div className="animate-pulse text-lg text-muted-foreground">Loading videos...</div>
+                <div className="animate-pulse text-lg text-muted-foreground">Cargando videos...</div>
             </div>}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {videos.map((video, index) => (

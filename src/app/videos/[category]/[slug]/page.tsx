@@ -66,8 +66,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         }
     } catch {
         return {
-            title: 'Video Not Found',
-            description: 'The requested video could not be found'
+            title: 'Video No Encontrado',
+            description: 'El video solicitado no pudo ser encontrado'
         }
     }
 }
@@ -82,7 +82,7 @@ export default async function VideoPage({ params }: Props) {
 
     return (
         <main className="min-h-screen bg-white dark:bg-[#030014]">
-            {/* Header Section */}
+            {/* Sección de Encabezado */}
             <div className="relative w-full pt-16 sm:pt-20">
                 <div className="absolute inset-0">
                     <div className="absolute w-full h-full bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
@@ -111,7 +111,7 @@ export default async function VideoPage({ params }: Props) {
                             <span className="hidden sm:inline">•</span>
                             <time className="flex items-center gap-2">
                                 <CalendarDays className="h-4 w-4" />
-                                {new Date(video.created_at).toLocaleDateString('en-US', {
+                                {new Date(video.created_at).toLocaleDateString('es-ES', {
                                     month: 'long',
                                     day: 'numeric',
                                     year: 'numeric'
@@ -120,10 +120,10 @@ export default async function VideoPage({ params }: Props) {
                         </div>
                     </div>
 
-                    {/* Video Player */}
+                    {/* Reproductor de Video */}
                     <Suspense fallback={<div className="w-full max-w-5xl mx-auto aspect-video bg-gray-100 dark:bg-white/5 rounded-xl sm:rounded-2xl" style={{ boxShadow: '0 0 100px -15px rgba(139, 92, 246, 0.15), 0 30px 60px -15px rgba(139, 92, 246, 0.2)' }} />}>
                         <div className="relative max-w-5xl mx-auto px-4 sm:px-0">
-                            {/* Video Container */}
+                            {/* Contenedor del Video */}
                             <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-gray-50 dark:bg-black/90 ring-1 ring-violet-500/20 dark:ring-white/10" style={{ boxShadow: '0 0 100px -15px rgba(139, 92, 246, 0.15), 0 30px 60px -15px rgba(139, 92, 246, 0.2)' }}>
                                 <iframe
                                     className="w-full aspect-video"
@@ -161,7 +161,7 @@ export default async function VideoPage({ params }: Props) {
                                     {video.author}
                                 </h3>
                                 <p className="text-sm text-gray-500 dark:text-white/50">
-                                    Content Creator at MSP News
+                                    Creador de Contenido en MSP News
                                 </p>
                             </div>
                         </div>

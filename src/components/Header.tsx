@@ -115,7 +115,7 @@ export const Header = () => {
                     }`}
                   onClick={() => setIsDrawerOpen(false)}
                 >
-                  Home
+                  Inicio
                 </Link>
               </li>
               <li>
@@ -139,7 +139,7 @@ export const Header = () => {
                     }`}
                   onClick={() => setIsDrawerOpen(false)}
                 >
-                  Articles
+                  Artículos
                 </Link>
               </li>
               <li>
@@ -151,7 +151,7 @@ export const Header = () => {
                     }`}
                   onClick={() => setIsDrawerOpen(false)}
                 >
-                  Categories
+                  Categorías
                 </Link>
               </li>
             </ul>

@@ -30,14 +30,14 @@ export const LatestVideos = ({ videos }: LatestVideosProps) => {
             <div className="relative">
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-500 to-pink-500 font-extrabold">
-                  Latest
+                  Últimos
                 </span>
                 <span className="ml-3 text-foreground/90 font-extrabold">Videos</span>
               </h2>
               <div className="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 rounded-full blur-3xl" />
             </div>
             <p className="text-lg text-muted-foreground/80 max-w-2xl font-medium">
-              Discover our curated collection of trending content
+              Descubre nuestra colección de contenido tendencia
             </p>
           </div>
           <Link href="/videos">
@@ -47,7 +47,7 @@ export const LatestVideos = ({ videos }: LatestVideosProps) => {
                 border-none bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-pink-500/10 hover:from-violet-500/20 hover:via-fuchsia-500/20 hover:to-pink-500/20"
             >
               <span className="relative z-10 bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text text-transparent font-semibold">
-                Explore All
+                Ver Todos
               </span>
               <span className="ml-2 relative z-10 transition-transform duration-300 group-hover:translate-x-1">
                 →
@@ -112,7 +112,7 @@ export const LatestVideos = ({ videos }: LatestVideosProps) => {
                                 {video.author}
                               </p>
                               <p className="text-[10px] xs:text-xs text-white/70 font-medium">
-                                {new Date(video.created_at).toLocaleDateString('en-US', {
+                                {new Date(video.created_at).toLocaleDateString('es-ES', {
                                   month: 'long',
                                   day: 'numeric',
                                   year: 'numeric'

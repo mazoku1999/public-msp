@@ -58,8 +58,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         }
     } catch {
         return {
-            title: 'Article Not Found',
-            description: 'The requested article could not be found'
+            title: 'Artículo No Encontrado',
+            description: 'El artículo solicitado no pudo ser encontrado'
         }
     }
 }
@@ -75,7 +75,7 @@ export default async function ArticlePage({ params }: Props) {
     return (
         <div className="min-h-screen bg-background">
             <Suspense fallback={<div className="min-h-[50vh] w-full flex items-center justify-center">
-                <div className="animate-pulse text-lg text-muted-foreground">Loading article...</div>
+                <div className="animate-pulse text-lg text-muted-foreground">Cargando artículo...</div>
             </div>}>
                 {/* Hero Section */}
                 <div className="relative min-h-[50vh] w-full overflow-hidden">
@@ -108,7 +108,7 @@ export default async function ArticlePage({ params }: Props) {
                                         className="group gap-2 text-white hover:text-white bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-sm"
                                     >
                                         <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
-                                        Back to Articles
+                                        Volver a Artículos
                                     </Button>
                                 </Link>
                             </div>
@@ -138,7 +138,7 @@ export default async function ArticlePage({ params }: Props) {
                                         <div>
                                             <p className="text-white font-medium">{article.author}</p>
                                             <p className="text-sm text-white/80">
-                                                {new Date(article.created_at).toLocaleDateString('en-US', {
+                                                {new Date(article.created_at).toLocaleDateString('es-ES', {
                                                     year: 'numeric',
                                                     month: 'long',
                                                     day: 'numeric'
@@ -226,7 +226,7 @@ export default async function ArticlePage({ params }: Props) {
                                 <div className="relative flex justify-center">
                                     <div className="bg-violet-500/10 backdrop-blur-sm px-6 py-2 rounded-full border border-violet-500/20">
                                         <Badge className="bg-transparent text-violet-500 hover:bg-transparent border-0 font-semibold">
-                                            Featured Video
+                                            Video Destacado
                                         </Badge>
                                     </div>
                                 </div>
