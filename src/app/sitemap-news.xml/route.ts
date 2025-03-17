@@ -1,6 +1,9 @@
 import { api } from '@/services/api';
 import { News, Video } from '@/types';
 
+// Forzar que esta ruta siempre sea dinámica
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: Request) {
     try {
         // Obtener videos y noticias
@@ -14,8 +17,7 @@ export async function GET(request: Request) {
         const recentVideos = videos.filter(video => new Date(video.created_at) >= twoDaysAgo);
         const recentArticles = articles.filter(article => new Date(article.created_at) >= twoDaysAgo);
 
-        // Limitar a un máximo de 1000 entradas en total (según recomendación de Google)
-        const combinedContent = [...recentVideos, ...recentArticles].slice(0, 1000);
+
 
         // Obtener el User-Agent para determinar si es un bot o un navegador
         const userAgent = request.headers.get('user-agent') || '';

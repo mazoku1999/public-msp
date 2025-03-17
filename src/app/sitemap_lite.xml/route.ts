@@ -1,7 +1,10 @@
 import { api } from '@/services/api';
 import { News, Video } from '@/types';
 
-export async function GET(request: Request) {
+// Por consistencia con el sitemap-news.xml
+export const dynamic = 'force-dynamic';
+
+export async function GET() {
     try {
         // Obtener videos y noticias
         const videos = await api.getVideos();
