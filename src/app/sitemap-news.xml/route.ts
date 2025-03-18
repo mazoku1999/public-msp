@@ -104,10 +104,6 @@ function generateNewsXml(videos: Video[], articles: News[]): string {
         xml += `      <image:title>${escapeXml(video.title)}</image:title>\n`;
         xml += '    </image:image>\n';
 
-        // Si tuviéramos versiones en otros idiomas, agregaríamos etiquetas hreflang
-        // Por ejemplo:
-        // xml += '    <xhtml:link rel="alternate" hreflang="en" href="https://en.example.com/video/..." />\n';
-
         xml += '  </url>\n';
 
         entryCount++;
@@ -156,18 +152,27 @@ function generateNewsXml(videos: Video[], articles: News[]): string {
             xml += '    </video:video>\n';
         }
 
-        // Si tuviéramos versiones en otros idiomas, agregaríamos etiquetas hreflang
-        // Por ejemplo:
-        // xml += '    <xhtml:link rel="alternate" hreflang="en" href="https://en.example.com/article/..." />\n';
-
         xml += '  </url>\n';
 
         entryCount++;
     }
 
-    // Si no hay entradas recientes, agregar un comentario explicativo
+    // Si no hay entradas recientes, agregar una URL de la página principal
+    // Esto es crucial: Google requiere al menos una etiqueta <url> válida
     if (entryCount === 0) {
-        xml += '  <!-- No hay contenido publicado en los últimos 2 días. -->\n';
+        const now = new Date();
+        xml += '  <url>\n';
+        xml += `    <loc>${process.env.NEXT_PUBLIC_BASE_URL}/</loc>\n`;
+        xml += '    <news:news>\n';
+        xml += '      <news:publication>\n';
+        xml += `        <news:name>${process.env.NEXT_PUBLIC_SITE_NAME || 'Mi Sitio de Noticias'}</news:name>\n`;
+        xml += '        <news:language>es</news:language>\n';
+        xml += '      </news:publication>\n';
+        xml += `      <news:publication_date>${now.toISOString()}</news:publication_date>\n`;
+        xml += '      <news:title>Página Principal</news:title>\n';
+        xml += '      <news:keywords>noticias</news:keywords>\n';
+        xml += '    </news:news>\n';
+        xml += '  </url>\n';
     }
 
     // Cerrar el documento XML
